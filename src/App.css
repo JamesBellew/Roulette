@@ -4,7 +4,62 @@
   padding: 2rem;
   text-align: center;
 }
+.roulette-table{
+  width: 50vw;
+  position: relative;
+  background-color: green;
+}
+.roulette-bet-number{
+  padding: 20px;
+  background-color: black;
+  margin: 2px;
+  cursor: pointer;
+  text-align: center;
+  margin: auto;
+}
+.roulette-game {
+  display: flex; /* Enable flexbox */
+  justify-content: center; /* Center items horizontally */
+  align-items: start; /* Align items to the start vertically */
+  gap: 2rem; /* Space between the roulette table and wheel */
+}
 
+.roulette-wheel {
+  width: 300px; /* Adjust as necessary */
+  height: 300px; /* Adjust as necessary */
+  border: 2px solid #000; /* Example styling, change as needed */
+  border-radius: 50%; /* Make it circular */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ddd; /* Example background color */
+}
+.roulette-bet-number:nth-child(2n){
+background-color: red;
+}
+.roulette-bet-table {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9%, 1fr));
+  gap: 10px; /* Adjust the space between grid items */
+}
+.numberOnTableHasBet{
+  border: 2px solid white;
+  position: relative;
+}
+/* You can add media queries for finer control in different screen sizes */
+@media (max-width: 600px) {
+  .roulette-bet-table {
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr)); /* Fewer columns on smaller screens */
+  }
+}
+.chipsOnNumber{
+  position: absolute;
+  width: 20%;
+  left: 40%;
+  height: 10px;
+  background-color: white;
+  border-radius: 100px;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
