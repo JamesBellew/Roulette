@@ -1,14 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.pie-chart {
+	background:
+		radial-gradient(
+			circle closest-side,
+			transparent 66%,
+			white 0
+		),
+    conic-gradient(
+      red 0,
+      red 8.3%,  /* 1/12 of 100% */
+      black 8.3%,
+      black 16.6%, /* 2/12 of 100% */
+      red 16.6%,
+      red 24.9%,  /* 3/12 of 100% */
+      black 24.9%,
+      black 33.2%, /* 4/12 of 100% */
+      red 33.2%,
+      red 41.5%,  /* 5/12 of 100% */
+      black 41.5%,
+      black 49.8%, /* 6/12 of 100% */
+      red 49.8%,
+      red 58.1%,  /* 7/12 of 100% */
+      black 58.1%,
+      black 66.4%, /* 8/12 of 100% */
+      red 66.4%,
+      red 74.7%,  /* 9/12 of 100% */
+      black 74.7%,
+      black 83%,   /* 10/12 of 100% */
+      red 83%,
+      red 91.3%,  /* 11/12 of 100% */
+      black 91.3%,
+      black 100%   /* 12/12 of 100% */
+  );
+	position: relative;
+	width: 500px;
+	min-height: 350px;
+	margin: 0;
+	outline: 1px solid #ccc;
+}
+.pie-chart figcaption {
+	position: absolute;
+	bottom: 1em;
+	right: 1em;
+	font-size: smaller;
+	text-align: right;
+}
+.pie-chart span:after {
+	display: inline-block;
+	content: "";
+	width: 0.8em;
+	height: 0.8em;
+	margin-left: 0.4em;
+	height: 0.8em;
+	border-radius: 0.2em;
+	background: currentColor;
+}
+
+
+
+
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
-.roulette-table{
-  width: 50vw;
-  position: relative;
-  background-color: green;
-}
+
 .roulette-bet-number{
   padding: 20px;
   background-color: black;
@@ -17,23 +78,110 @@
   text-align: center;
   margin: auto;
 }
+
 .roulette-game {
   display: flex; /* Enable flexbox */
   justify-content: center; /* Center items horizontally */
-  align-items: start; /* Align items to the start vertically */
-  gap: 2rem; /* Space between the roulette table and wheel */
+
+ /* Space between the roulette table and wheel */
 }
 
-.roulette-wheel {
-  width: 300px; /* Adjust as necessary */
-  height: 300px; /* Adjust as necessary */
-  border: 2px solid #000; /* Example styling, change as needed */
-  border-radius: 50%; /* Make it circular */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #ddd; /* Example background color */
+.pie-chart {
+  position: relative;
+  list-style: none;
+	max-width: 500px;
+	margin: 0;
+  padding: 0;
+  
+  animation-name: rotate;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
 }
+
+
+.pie-chart:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.pie-chart li {
+  position: absolute;
+  top: calc(50% - 0.5rem);
+  left: 50%;
+  padding-left: 10%;
+  width: 37%;
+  text-align: right;
+  transform-origin: 0;
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 100%;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pie-chart li:nth-child(1) {
+  transform: rotate(calc(-90deg + 1.8deg * 19.3));
+}
+
+.pie-chart li:nth-child(2) {
+  transform: rotate(calc(-90deg + 1.8deg * (19.3 + 31)));
+}
+
+.pie-chart li:nth-child(3) {
+  transform: rotate(calc(-90deg + 1.8deg * (31 + 39.1)));
+}
+
+.pie-chart li:nth-child(4) {
+  transform: rotate(calc(-90deg + 1.8deg * (39.1 + 44.2)));
+}
+
+.pie-chart li:nth-child(5) {
+  transform: rotate(calc(-90deg + 1.8deg * (44.2 + 47.2)));
+}
+
+.pie-chart li:nth-child(6) {
+  transform: rotate(calc(-90deg + 1.8deg * (47.2 + 50.8)));
+}
+
+.pie-chart li:nth-child(7) {
+  transform: rotate(calc(-90deg + 1.8deg * (50.8 + 72.6)));
+}
+
+.pie-chart li:nth-child(8) {
+  transform: rotate(calc(-90deg + 1.8deg * (72.6 + 100)));
+}
+.roulette-wheel {
+  position: relative;
+  width: 24rem; /* 96px */
+  height: 24rem; /* 96px */
+  border-radius: 50%;
+  background-color: black; /* or any color */
+}
+
+.roulette-number {
+  position: absolute;
+  color: white; /* or any color */
+  /* Adjust width and height as needed */
+  width: 3rem; /* example size */
+  height: 3rem; /* example size */
+  line-height: 3rem; /* to vertically center text */
+  text-align: center;
+  border-radius: 50%;
+  transform-origin: 50% 50%;
+}
+
+.roulette-number {
+  /* Style for individual number */
+  color: white;
+  transform-origin: bottom;
+}
+.roulette-bet-number:nth-child(1){
+  background-color: green;
+  }
 .roulette-bet-number:nth-child(2n){
 background-color: red;
 }
@@ -53,9 +201,7 @@ background-color: red;
   }
 }
 .chipsOnNumber{
-  position: absolute;
-  width: 20%;
-  left: 40%;
+  position: fixed;
   height: 10px;
   background-color: white;
   border-radius: 100px;
