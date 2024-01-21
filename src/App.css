@@ -179,17 +179,15 @@
   color: white;
   transform-origin: bottom;
 }
-.roulette-bet-number:nth-child(1){
-  background-color: green;
-  }
+
 .roulette-bet-number:nth-child(2n){
 background-color: red;
 }
-.roulette-bet-table {
+/* .roulette-bet-table {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(9%, 1fr));
-  gap: 10px; /* Adjust the space between grid items */
-}
+  grid-template-columns: repeat(auto-fill, minmax(8%, 1fr));
+ 
+} */
 .numberOnTableHasBet{
   border: 2px solid white;
   position: relative;
